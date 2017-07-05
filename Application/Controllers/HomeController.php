@@ -1,14 +1,13 @@
 <?php
 namespace Application\Controllers;
 
-public class HomeController extends BaseController
-{
-	private function renderView($data = array()) {
-		
-	}
-	
+use Krokhmal\Soft\Web\MVC\BaseController;
+
+class HomeController extends BaseController
+{	
     public function index()
     {
-        echo "home, work";
+        $data['title'] = 'Главная - тестовое задание';
+        return $this->view($data);
     }
 }

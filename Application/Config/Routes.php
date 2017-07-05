@@ -3,7 +3,7 @@ namespace Application\Config;
 
 class Routes
 {	
-    public const ROUTE_LIST = array
+    const ROUTE_LIST = array
     (
 		// Главная 
         array(
