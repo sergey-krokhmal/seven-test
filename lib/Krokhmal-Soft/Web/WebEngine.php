@@ -5,5 +5,6 @@ namespace Krokhmal\Soft\Web;
 abstract class WebEngine
 {
     // Выполнение запроса
-    abstract public function executeRequest($http_method, $url_path, $assoc_params);
+    //abstract public function executeRequest($http_method, $url_path, $assoc_params);
+    abstract public function executeRequest($url_path);
 }

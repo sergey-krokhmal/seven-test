@@ -1,41 +1,35 @@
 <?php
-use Krokhmal\Soft\Web\WebEngine;
-
 namespace Krokhmal\Soft\Web\MVC;
 
-// MVC äâèæîê
+use Krokhmal\Soft\Web\WebEngine;
+use Application\Config\Routes;
+
+// MVC Ð´Ð²Ð¸Ð¶Ð¾Ðº
 class MVCEngine extends WebEngine
 {
-    
-    // Âûïîëíèòü çàïðîñ ñ ïàðàìåòðàìè
-    public function executeRequest($http_method, $request_uri, $assoc_params)
+    // Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ Ð·Ð°Ð¿Ñ€Ð¾Ñ Ñ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸
+    public function executeRequest($request_uri, $assoc_params = array())
     {
         $url_path = parse_url($request_uri, PHP_URL_PATH);
         
-        $url_spec = '~^/([a-zA-Z0-9_\-]+)(/([a-zA-Z0-9_\-]+))?.*$~';
-        preg_match($url_spec, $url_path, $matches);
-
-        $controller_name = "Krokhmal\\Soft\\Tasker\\".$matches[1];
-        $method_name = $matches[3];
-        $controller_method_name = strtolower($http_method).ucwords($method_name);
-        
-        $json_response = '{}';
-        if ($http_method == 'OPTIONS') {
-            $json_response = '{"status":"work!"}';
-        } elseif (class_exists($controller_name)) {
-            if ($method_name == '' || $method_name == 'index') {
-                $controller = new $controller_name();
-                $json_response = json_encode($controller->getIndex());
-            } elseif (method_exists($controller_name, $controller_method_name)) {
-                $controller = new $controller_name();
-                $json_response = json_encode($controller->$controller_method_name($assoc_params));
-            } else {
-                $json_response = '{"error":"Api method not found!"}';
-            }
-        } else {
-            $json_response = '{"error":"Api controller not found!"}';
-        }
-        
-        echo $json_response;
+		foreach(Routes::ROUTE_LIST as $route) {
+			if(preg_match($route['pattern'], $url_path, $matches)) {
+				$controller_name = $route['controller'].'Controller';
+				$method_name = $route['method'];
+				$arguments = array();
+				if (isset($route['arguments'])) {
+					foreach($route['arguments'] as $arg_name) {
+						$arguments[$arg_name] = $matches[$arg_name];
+					}
+				}
+				break;
+			}
+		}
+		
+		if (isset($controller_name)) {
+			print_r($controller_name);
+			$controller = $$controller_name();
+			$controller->$method_name($arguments);
+		}
     }
 }

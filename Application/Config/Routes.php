@@ -1,14 +1,9 @@
 <?php
-namespace Krokhmal\Soft\Application\Config;
+namespace Application\Config;
 
-public class Routes
-{
-	const ROOT = $_SERVER['DOCUMENT_ROOT'].'/';
-	const APP_DIR = 'Application/';
-	const APP_PATH = ROOT.APP_DIR;
-	const VIEW404 = 'Application/Views/Shared/404.php';
-	
-    const ROUTE_LIST = array
+class Routes
+{	
+    public const ROUTE_LIST = array
     (
 		// Главная 
         array(
@@ -29,7 +24,7 @@ public class Routes
 			'pattern' => '~^/tasks/solved/(?<task_number>[a-z0-9_-]+){1}$~',
 			'controller' => 'TestTasks',
 			'method' => 'solvedTask',
-			'arguments' => array('task_number');
+			'arguments' => array('task_number')
 		),
 		
 		// Страница тестовых заданий

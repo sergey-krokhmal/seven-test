@@ -1,7 +1,7 @@
 <?php
-namespace Application\Controllers;
+namespace Krokhmal\Soft\Web\MVC;
 
-public class HomeController extends BaseController
+public abstract class BaseController
 {
 	private function renderView($data = array()) {
 		
