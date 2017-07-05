@@ -7,3 +7,5 @@ $loader = require (__DIR__ . '/vendor/autoload.php');
 $loader->addPsr4( 'Krokhmal\\Soft\\', __DIR__ . '/lib/Krokhmal-Soft/');
 $loader->addPsr4( 'Application\\', __DIR__ . '/Application/');
 
+$we = new WebEngine();
+$we->executeRequest($_SERVER['REQUEST_URI']);
