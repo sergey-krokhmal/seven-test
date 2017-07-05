@@ -1,17 +1,9 @@
 <?php
 namespace Krokhmal\Soft\Web;
 
-// абстрактный класс движка API
-abstract class ApiEngine
+// Абстрактный класс Web движка
+abstract class WebEngine
 {
-    // ќкончание имени контроллера
-    protected $controller_postfix;
-    
-    public function __construct($controller_postfix)
-    {
-        $this->controller_postfix = $controller_postfix;
-    }
-    
-    // ‘ункци¤ выполнени¤ запроса
+    // Выполнение запроса
     abstract public function executeRequest($http_method, $url_path, $assoc_params);
 }
