@@ -1,7 +1,7 @@
 <?php
-namespace Krokhmal\Soft\Tasker;
+namespace Krokhmal\Soft\Application\Config;
 
-class DbConfig
+public class DbConfig
 {
     // Global variable with main DB parameters for connection
     const DB_CONFIG_PARAMS = array
