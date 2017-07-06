@@ -3,6 +3,7 @@ namespace Application\Controllers;
 
 use Krokhmal\Soft\Web\MVC\BaseController;
 use Application\Models\Task1 as Task1;
+use Application\Models\Task2 as Task2;
 
 class TestTaskController extends BaseController
 {	

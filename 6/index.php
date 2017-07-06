@@ -13,11 +13,7 @@
     $max_repeat_count = max($repeat_counts);        // Максимальное количество повторений
     $repeats = array();
     for ($i = 2; $i <= $max_repeat_count; $i++) {       // Для всех возможных количеств повторений
-        $repeats[$i] = array_keys($repeat_counts, $i);  // Получить повторяемые значения
-        
-        // Елсли нужен одномерный массив из найденых чисел, то использовать эту инструкцию вместо предыдущей
-        // $repeats = array_merge($repeats, array_keys($repeat_counts, $i));
-        // Но она работать будет дольше использованой
+        $repeats = array_merge($repeats, array_keys($repeat_counts, $i));
     }
     
     $end_time = microtime(true);            // Засечь время
