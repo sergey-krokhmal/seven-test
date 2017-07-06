@@ -16,7 +16,7 @@ class TestTaskController extends BaseController
 
 	public function __construct()
 	{
-		$this->db = new PDO('mysql:host=localhost;dbname=tree', 'tree', 'tree');
+		$this->db = new \PDO('mysql:host=localhost;dbname=tree', 'tree', 'tree');
 	}
 	
     public function index()
