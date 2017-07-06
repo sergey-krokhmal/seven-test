@@ -6,7 +6,7 @@
             </div>
             <div class="panel-body">
                 <h4 class="h5"><?=$input_data_name?></h4>
-                <pre><?=$input_data?></pre>
+                <pre><?print_r($input_data)?></pre>
             </div>
         </div>
     </div>
