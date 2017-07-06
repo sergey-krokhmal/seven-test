@@ -7,6 +7,13 @@ use Application\Models\Task2 as Task2;
 
 class TestTaskController extends BaseController
 {	
+	private $db;
+
+	public function __construct()
+	{
+		$this->db = new PDO('mysql:host=localhost;dbname=tree', 'tree', 'tree');
+	}
+	
     public function index()
     {
         $data['title'] = 'Список выполненных тестовых заданий';
@@ -35,9 +42,18 @@ class TestTaskController extends BaseController
                 $data['result'][0]['name'] = 'Массив с ключами и их значениями';
                 $data['result'][0]['array'] = $result;
             break;
+			case 3:
+				
+			break;
         }
         
         
         return $this->view($data);
     }
+	
+	public function tasksText()
+	{
+		$data['title'] = 'Текст тестового задания';
+		return $this->view($data);
+	}
 }

@@ -29,7 +29,7 @@ class Routes
 		
 		// Страница тестовых заданий
 		array(
-			'pattern' => '~^/tasks/list$~',
+			'pattern' => '~^/tasks/text$~',
 			'controller' => 'TestTask',
 			'method' => 'tasksText',
 		),

@@ -21,7 +21,7 @@
                             <li class="col-md-2">
                                 <a href="/">Главная</a>
                             </li>
-                            <li class="dropdown col-md-2">
+                            <li class="col-md-2">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Выполненные задания</a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/tasks/solved/1">Задание №1</a></li>
@@ -32,6 +32,9 @@
                                     <li><a href="/tasks/solved/6">Задание №6</a></li>
                                     <li><a href="/tasks/solved/7">Задание №7</a></li>
                                 </ul>
+                            </li>
+							<li class="col-md-2">
+                                <a href="/tasks/text">Текст задания</a>
                             </li>
                         </ul>
                     </nav>
