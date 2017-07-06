@@ -38,8 +38,10 @@ $column_indexes = array_fill(0, $comb_row_length, 0);
 for ($i = 0; $i < $comb_count; $i++) {
     // Для каждого индекса значения для комбинации из каждого исходного массива значений
     foreach ($column_indexes as $row_index => $col_index) {
+		// Выбираем соответствующие индексам значения в новую комбинацию
         $result[$i][$row_index] = $input_array[$row_index][$col_index];
     }
+	// Инкремент индекса
     incrementIndexes($input_array, $column_indexes);
 }
 echo "<pre>";

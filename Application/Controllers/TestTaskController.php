@@ -4,6 +4,11 @@ namespace Application\Controllers;
 use Krokhmal\Soft\Web\MVC\BaseController;
 use Application\Models\Task1 as Task1;
 use Application\Models\Task2 as Task2;
+use Application\Models\Task3 as Task3;
+use Application\Models\Task4 as Task4;
+use Application\Models\Task5 as Task5;
+use Application\Models\Task6 as Task6;
+use Application\Models\Task7 as Task7;
 
 class TestTaskController extends BaseController
 {	
@@ -43,7 +48,48 @@ class TestTaskController extends BaseController
                 $data['result'][0]['array'] = $result;
             break;
 			case 3:
-				
+			case 4:
+			case 5:
+				$task_class = 'Task'.$args['task_number'];
+				$task = new $task_class($this->db);
+				$data['input_data'] = $task->getInputData();
+                $result = $task->getResult();
+				$data['input_data_name'] = 'Массив дерева (список смежности)';
+                $data['result'][0]['array'] = $result;
+				switch($args['task_number']) {
+					case 3:
+						$data['result'][0]['name'] = 'Массив комбинаций';
+					break;
+					case 4:
+						$data['result'][0]['name'] = 'Массив комбинаций';
+					break;
+					case 5:
+						$data['result'][0]['name'] = 'Массив комбинаций';
+					break;
+				}
+			case 6:
+				$task = new Task6(1000000, 100000, 1500000);
+                //$data['input_data'] = 'Массив слишком большой для отображения';
+                $data['input_data'] = $task->getInputData();
+                $data['input_data_name'] = 'Массив случайных чисел';
+                $result = $task->getResult();
+                $data['result'][0]['name'] = 'Массив повторяемых значений';
+                $data['result'][0]['array'] = $result;
+			break;
+			case 7:
+				$task = new Task7(
+					[
+						['a1', 'a2', 'a3'],
+						['b1', 'b2'],
+						['c1', 'c2', 'c3'],
+						['d1']
+					]
+				);
+                $data['input_data'] = $task->getInputData();
+                $data['input_data_name'] = 'Массивы значений';
+                $result = $task->getResult();
+                $data['result'][0]['name'] = 'Массив комбинаций';
+                $data['result'][0]['array'] = $result;
 			break;
         }
         
