@@ -1,7 +1,7 @@
 <?php
 namespace Application\Models;
 
-class Task3
+class Task4
 {
     private $db;
 	private $rows;
