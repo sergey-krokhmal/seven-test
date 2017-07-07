@@ -3,7 +3,6 @@ namespace Krokhmal\Soft\Web\MVC;
 
 use Krokhmal\Soft\Web\WebEngine;
 use Application\Config\Routes;
-use Application\Controllers\HomeController;
 
 // MVC движок
 class MVCEngine extends WebEngine
@@ -13,11 +12,14 @@ class MVCEngine extends WebEngine
     {
         $url_path = parse_url($request_uri, PHP_URL_PATH);
         
+		$controller_name = "Application\\Controllers\\NotFoundController";
+		$method_name = 'index';
+		$arguments = array();
+		
 		foreach(Routes::ROUTE_LIST as $route) {
 			if(preg_match($route['pattern'], $url_path, $matches)) {
 				$controller_name = "Application\\Controllers\\".$route['controller'].'Controller';
 				$method_name = $route['method'];
-				$arguments = array();
 				if (isset($route['arguments'])) {
 					foreach($route['arguments'] as $arg_name) {
 						$arguments[$arg_name] = $matches[$arg_name];

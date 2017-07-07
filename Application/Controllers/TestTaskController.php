@@ -9,6 +9,7 @@ use Application\Models\Task4 as Task4;
 use Application\Models\Task5 as Task5;
 use Application\Models\Task6 as Task6;
 use Application\Models\Task7 as Task7;
+use \PDO;
 
 class TestTaskController extends BaseController
 {	
@@ -16,18 +17,22 @@ class TestTaskController extends BaseController
 
 	public function __construct()
 	{
-		$this->db = new \PDO('mysql:host=localhost;dbname=tree', 'tree', 'tree');
+		$this->db = new PDO('mysql:host=localhost;dbname=tree', 'tree', 'tree');
 	}
 	
-    public function index()
+    public function index($args = array())
     {
-        $data['title'] = 'Список выполненных тестовых заданий';
+		$data = $args;
+        $data['title'] = 'Список заданий';
+		$data['title_h2'] = $data['title'];
         return $this->view($data);
     }
     
     public function solvedTask($args)
     {
+		$data = $args;
         $data['title'] = 'Список выполненных тестовых заданий';
+		$data['title_h2'] = 'Задание №'.$args['task_number'];
         switch($args['task_number']) {
             case 1:
                 $task = new Task1($_SERVER['DOCUMENT_ROOT'].'/files/test.txt');
@@ -50,26 +55,28 @@ class TestTaskController extends BaseController
 			case 3:
 			case 4:
 			case 5:
-				$task_class = 'Task'.$args['task_number'];
-				$task = new $task_class($this->db);
-				$data['input_data'] = $task->getInputData();
-                $result = $task->getResult();
-				$data['input_data_name'] = 'Массив дерева (список смежности)';
-                $data['result'][0]['array'] = $result;
 				switch($args['task_number']) {
 					case 3:
+						$task = new Task3($this->db);
 						$data['result'][0]['name'] = 'Массив комбинаций';
 					break;
 					case 4:
+						$task = new Task4($this->db);
 						$data['result'][0]['name'] = 'Массив комбинаций';
 					break;
 					case 5:
+						$task = new Task5($this->db);
 						$data['result'][0]['name'] = 'Массив комбинаций';
 					break;
 				}
+				$data['input_data_name'] = 'Массив дерева (список смежности)';
+				$data['input_data'] = $task->getInputData();
+				$result = $task->getResult();
+				$data['result'][0]['array'] = $result;
+			break;
 			case 6:
 				$task = new Task6(1000000, 100000, 1500000);
-                //$data['input_data'] = 'Массив слишком большой для отображения';
+                $data['input_data'] = 'Массив слишком большой для отображения';
                 $data['input_data'] = $task->getInputData();
                 $data['input_data_name'] = 'Массив случайных чисел';
                 $result = $task->getResult();
@@ -91,6 +98,12 @@ class TestTaskController extends BaseController
                 $data['result'][0]['name'] = 'Массив комбинаций';
                 $data['result'][0]['array'] = $result;
 			break;
+			case '':
+				return $this->index($data);
+			break;
+			default:
+				$data['err_msg'] = "Задания под номером ".$args['task_number']." нет! Выберите задание из списка.";
+				return $this->index($data);
         }
         
         

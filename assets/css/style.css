@@ -1,5 +1,13 @@
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
 .top-header {
-    background-color: #f5f5f5;
+    background-color: #d9edf7;
 }
 
 .header-menu-stripe {
@@ -27,27 +35,17 @@
 .header-menu>.nav-tabs>li>a {
     border: none;
     border-radius: 0;
-    /*text-transform: uppercase;*/
     color: white;
     text-align: center;
 }
 
-/*.header-menu>.nav-tabs>li:not(:nth-child(1)):after {
-    content: ' ';
-    background: white;
-    position: absolute;
-    top: 4px;
-    width: 1px;
-    height: 39px;
-    display: block;
-}*/
 .header-menu .nav .open>a, .header-menu .nav .open>a:hover, .header-menu .nav .open>a:focus {
 	background-color: #313131;
 }
 
 .header-menu .dropdown-menu {
     width: 100%;
-    background-color: #a09f9f;
+    //background-color: #a09f9f;
 }
 
 .header-menu .nav>li>a:hover, .header-menu .nav>li>a:focus {
@@ -62,9 +60,16 @@
     padding: 20px 0;
 }
 
-.panel-part {
-    margin: 20px;
+
+@media (min-width: 992px){
+	.panel-part-left {
+		padding-right: 10px;
+	}
+	.panel-part-right {
+		padding-left: 10px;
+	}
 }
+
 
 footer {
     position: fixed;

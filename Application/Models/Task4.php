@@ -20,7 +20,7 @@ class Task4
     
     public function getResult()
     {
-        $stm = $db->query("
+        $stm = $this->db->query("
 			SELECT a.* FROM `departs` a
 			LEFT JOIN `departs` b ON a.parent = b.id
 			WHERE b.id IS NULL AND a.id IN (

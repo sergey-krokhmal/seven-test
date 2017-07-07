@@ -1,6 +1,8 @@
 <?php
 namespace Application\Models;
 
+use \PDO;
+
 class Task3
 {
     private $db;
@@ -41,7 +43,7 @@ class Task3
 			}
 			$stm = $db->query("SELECT * FROM `departs`");
 		}
-		$this->rows = $stm->fetchAll();
+		$this->rows = $stm->fetchAll(PDO::FETCH_ASSOC);
     }
     
 	private function insertNode(&$tree, $i, $level, $name, $parent) // функция фставки ветви в массив дерева

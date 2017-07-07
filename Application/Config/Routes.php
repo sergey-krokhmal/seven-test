@@ -21,7 +21,7 @@ class Routes
 		
 		// Страница выполненного тестового задания
 		array(
-			'pattern' => '~^/tasks/solved/(?<task_number>[a-z0-9_-]+){1}$~',
+			'pattern' => '~^/tasks/solved/(?<task_number>|[a-z0-9_-]+){1}$~',
 			'controller' => 'TestTask',
 			'method' => 'solvedTask',
 			'arguments' => array('task_number')
