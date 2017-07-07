@@ -14,14 +14,14 @@ class Routes
 		
 		// Страница списка выполненных заданий
 		array(
-			'pattern' => '~^/tasks/?$~',
+			'pattern' => '~^/tasks$~',
 			'controller' => 'TestTask',
 			'method' => 'index',
 		),
 		
 		// Страница выполненного тестового задания
 		array(
-			'pattern' => '~^/tasks/solved/(?<task_number>|[a-z0-9_-]+){1}$~',
+			'pattern' => '~^/tasks/solved(?:/(?<task_number>[a-z0-9_-]+))?$~',
 			'controller' => 'TestTask',
 			'method' => 'solvedTask',
 			'arguments' => array('task_number')

@@ -11,6 +11,7 @@ class MVCEngine extends WebEngine
     public function executeRequest($request_uri, $assoc_params = array())
     {
         $url_path = parse_url($request_uri, PHP_URL_PATH);
+		$url_path = preg_replace('~/$~', '', $url_path);
         
 		$controller_name = "Application\\Controllers\\NotFoundController";
 		$method_name = 'index';
