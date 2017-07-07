@@ -9,6 +9,7 @@ use Application\Models\Task4;
 use Application\Models\Task5;
 use Application\Models\Task6;
 use Application\Models\Task7;
+use Application\Config\DBConfig;
 use \PDO;
 
 // Контроллер тестовых заданий
@@ -19,7 +20,7 @@ class TestTaskController extends BaseController
 	public function __construct()
 	{
         // Создать подключение к БД
-		$this->db = new PDO('mysql:host=localhost;dbname=tree', 'tree', 'tree');
+		$this->db = new PDO('mysql:host='.DBConfig::HOST.';dbname='.DBConfig::DB_NAME, DBConfig::USER, DBConfig::PASS);
 	}
 	
     // Список выполненных заданий
