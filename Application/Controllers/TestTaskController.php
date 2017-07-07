@@ -77,7 +77,10 @@ class TestTaskController extends BaseController
 			case 6:
 				$task = new Task6(1000000, 100000, 1500000);
                 $data['input_data'] = 'Массив слишком большой для отображения';
-                $data['input_data'] = $task->getInputData();
+                $data['large_array'] = true;
+                if (isset($_POST['show_anyway'])) {                    
+                    $data['input_data'] = $task->getInputData();
+                }
                 $data['input_data_name'] = 'Массив случайных чисел';
                 $result = $task->getResult();
                 $data['result'][0]['name'] = 'Массив повторяемых значений';

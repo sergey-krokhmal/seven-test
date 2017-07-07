@@ -22,8 +22,8 @@ class Task6
     
     public function getResult()
     {
-        $repeat_counts = array_count_values($array);    // Получить количество повторений каждого значения массива
-		$max_repeat_count = max($repeat_counts);        // Максимальное количество повторений
+        $repeat_counts = array_count_values($this->arr);    // Получить количество повторений каждого значения массива
+		$max_repeat_count = max($repeat_counts);            // Максимальное количество повторений
 		$repeats = array();
 		for ($i = 2; $i <= $max_repeat_count; $i++) {       // Для всех возможных количеств повторений
 			$repeats = array_merge($repeats, array_keys($repeat_counts, $i));

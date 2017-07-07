@@ -1,5 +1,0 @@
-[TITLE:заголовок]Тестовое задание 1[/TITLE]
-[DESCRIPTION]Парсер тегов.[/DESCRIPTION]
-[DIV1:блок текста]тестовые символы[/DIV1]
-[DIV2:блок текста2]test[/DIV2]
-[DIV3]third test string[/DIV3]

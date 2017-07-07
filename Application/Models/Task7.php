@@ -18,7 +18,7 @@ class Task7
 		if (isset($column_indexes[$row])) {
 			if ($column_indexes[$row] == count($input_array[$row])-1) {
 				$column_indexes[$row] = 0;
-				incrementIndexes($input_array, $column_indexes, $row-1);
+				$this->incrementIndexes($input_array, $column_indexes, $row-1);
 			} else {
 				$column_indexes[$row]++;
 			}
@@ -35,7 +35,7 @@ class Task7
     public function getResult()
     {
         $result = array();
-
+        $input_array = $this->arr;
 		$comb_count = 1;
 		foreach($input_array as $row_array) {
 			$comb_count *= count($row_array);

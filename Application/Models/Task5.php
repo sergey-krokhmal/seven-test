@@ -1,6 +1,8 @@
 <?php
 namespace Application\Models;
 
+use \PDO;
+
 class Task5
 {
     private $db;
@@ -20,18 +22,18 @@ class Task5
     
     public function getResult()
     {
-        $stm = $db->query("
-			SELECT a.* FROM `departs` a
-			LEFT JOIN `departs` b ON a.parent = b.id
-			WHERE b.id IS NULL AND a.id IN (
-				SELECT b.parent
-				FROM `departs` a
-				LEFT JOIN `departs` b ON a.id = b.parent
-				GROUP BY b.parent
-				HAVING COUNT(b.id) >= 3
-			)
+        $stm = $this->db->query("
+			SELECT res.* FROM `departs` res
+			LEFT JOIN `departs` parent_l1 ON parent_l1.id = res.parent
+			LEFT JOIN `departs` parent_l2 ON parent_l2.id = parent_l1.parent
+			LEFT JOIN `departs` parent_l3 ON parent_l3.id = parent_l2.parent
+            LEFT JOIN `departs` no_child ON no_child.parent = res.id
+			WHERE
+            	parent_l1.id IS NOT NULL AND 
+                parent_l2.id IS NOT NULL AND
+                parent_l3.id IS NULL AND
+                no_child.id IS NULL
 		");
-
-		return $stm->fetchAll();
+		return $stm->fetchAll(PDO::FETCH_ASSOC);
 	}
 }

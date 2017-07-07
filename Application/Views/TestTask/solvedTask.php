@@ -10,7 +10,14 @@
 		</div>
 		<div class="panel-body">
 			<h4 class="h5"><?=$input_data_name?></h4>
-			<pre><?print_r($input_data)?></pre>
+            <?if(($large_array??false) && !isset($_POST['show_anyway'])):?>
+                <div class="alert alert-warning" role="alert"><?=$input_data?></div>
+                <form method="POST">
+                    <button type="submit" class="btn btn-warning" name="show_anyway" value="true">Всё-равно показать</button>
+                </form>
+            <?else:?>
+                <pre><?print_r($input_data);?></pre>
+            <?endif?>
 		</div>
 	</div>
 </div>
