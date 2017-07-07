@@ -1,0 +1,86 @@
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.top-header {
+    background-color: #d9edf7;
+}
+
+.header-menu-stripe {
+    background: -moz-linear-gradient(270deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(57,57,57,1)), color-stop(100%, rgba(28,28,28,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(270deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(270deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(270deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* ie10+ */
+    background: linear-gradient(180deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#393939', endColorstr='#1c1c1c',GradientType=0 ); /* ie6-9 */
+}
+
+.header-menu-stripe>.container {
+    padding:0;
+}
+
+.header-menu>.nav-tabs {
+    border: none;
+}
+
+.header-menu>.nav-tabs>li {
+    margin-bottom: 0;
+}
+
+.header-menu>.nav-tabs>li>a {
+    border: none;
+    border-radius: 0;
+    color: white;
+    text-align: center;
+}
+
+.header-menu .nav .open>a, .header-menu .nav .open>a:hover, .header-menu .nav .open>a:focus {
+	background-color: #313131;
+}
+
+.header-menu .dropdown-menu {
+    width: 100%;
+    //background-color: #a09f9f;
+}
+
+.header-menu .nav>li>a:hover, .header-menu .nav>li>a:focus {
+    background-color: #313131;
+}
+
+.header-menu>.nav-tabs>li>a:hover {
+    background: #313131;
+}
+
+.main {
+    padding: 20px 0;
+}
+
+
+@media (min-width: 992px){
+	.panel-part-left {
+		padding-right: 10px;
+	}
+	.panel-part-right {
+		padding-left: 10px;
+	}
+}
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background: -moz-linear-gradient(270deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(57,57,57,1)), color-stop(100%, rgba(28,28,28,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(270deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(270deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(270deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* ie10+ */
+    background: linear-gradient(180deg, rgba(57,57,57,1) 0%, rgba(28,28,28,1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#393939', endColorstr='#1c1c1c',GradientType=0 ); /* ie6-9 */
+}
