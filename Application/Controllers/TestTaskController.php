@@ -2,24 +2,27 @@
 namespace Application\Controllers;
 
 use Krokhmal\Soft\Web\MVC\BaseController;
-use Application\Models\Task1 as Task1;
-use Application\Models\Task2 as Task2;
-use Application\Models\Task3 as Task3;
-use Application\Models\Task4 as Task4;
-use Application\Models\Task5 as Task5;
-use Application\Models\Task6 as Task6;
-use Application\Models\Task7 as Task7;
+use Application\Models\Task1;
+use Application\Models\Task2;
+use Application\Models\Task3;
+use Application\Models\Task4;
+use Application\Models\Task5;
+use Application\Models\Task6;
+use Application\Models\Task7;
 use \PDO;
 
+// Контроллер тестовых заданий
 class TestTaskController extends BaseController
 {	
-	private $db;
+	private $db;    // Подключение к БД
 
 	public function __construct()
 	{
+        // Создать подключение к БД
 		$this->db = new PDO('mysql:host=localhost;dbname=tree', 'tree', 'tree');
 	}
 	
+    // Список выполненных заданий
     public function index($args = array())
     {
 		$data = $args;
@@ -28,11 +31,13 @@ class TestTaskController extends BaseController
         return $this->view($data);
     }
     
+    // Результаты выполненного задания с номером $args['task_number']
     public function solvedTask($args)
     {
-		$data = $args;
+		$data = $args;  // Аргументы скопировать в данные модели предствления
         $data['title'] = 'Список выполненных тестовых заданий';
 		$data['title_h2'] = 'Задание №'.$args['task_number'];
+        // Определить выбранное задание
         switch($args['task_number']) {
             case 1:
                 $task = new Task1($_SERVER['DOCUMENT_ROOT'].'/files/test.txt');
@@ -58,15 +63,15 @@ class TestTaskController extends BaseController
 				switch($args['task_number']) {
 					case 3:
 						$task = new Task3($this->db);
-						$data['result'][0]['name'] = 'Массив комбинаций';
+						$data['result'][0]['name'] = 'Иерархия элементов дерева';
 					break;
 					case 4:
 						$task = new Task4($this->db);
-						$data['result'][0]['name'] = 'Массив комбинаций';
+						$data['result'][0]['name'] = 'Записи без родителей, но с тремя и более потомками';
 					break;
 					case 5:
 						$task = new Task5($this->db);
-						$data['result'][0]['name'] = 'Массив комбинаций';
+						$data['result'][0]['name'] = 'Записи без потомков, но с 2-мя старшими родителями';
 					break;
 				}
 				$data['input_data_name'] = 'Массив дерева (список смежности)';
@@ -102,17 +107,19 @@ class TestTaskController extends BaseController
                 $data['result'][0]['array'] = $result;
 			break;
 			case '':
+                // Если задание не выбрано, показать список выполненных заданий
 				return $this->index($data);
 			break;
 			default:
+                // Если указано другое значение в качестве номера задания, показать ошибку и список доступных заданий
 				$data['err_msg'] = "Задания под номером ".$args['task_number']." нет! Выберите задание из списка.";
 				return $this->index($data);
         }
-        
-        
+        // Отобразить шаблон с результатом
         return $this->view($data);
     }
 	
+    // Текст задания
 	public function tasksText()
 	{
 		$data['title'] = 'Текст тестового задания';

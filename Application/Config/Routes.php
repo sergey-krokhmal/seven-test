@@ -1,8 +1,10 @@
 <?php
 namespace Application\Config;
 
+// Маршруты сайта
 class Routes
 {	
+    // Массив маршрутов сайта
     const ROUTE_LIST = array
     (
 		// Главная 

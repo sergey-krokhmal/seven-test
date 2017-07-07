@@ -1,10 +1,9 @@
 <?php
 namespace Krokhmal\Soft\Web;
 
-// Àáñòðàêòíûé êëàññ Web äâèæêà
+// ÐÐ±ÑÑ‚Ñ€Ð°ÐºÑ‚Ð½Ñ‹Ð¹ ÐºÐ»Ð°ÑÑ Web Ð´Ð²Ð¸Ð¶ÐºÐ°
 abstract class WebEngine
 {
-    // Âûïîëíåíèå çàïðîñà
-    //abstract public function executeRequest($http_method, $url_path, $assoc_params);
+    // Ð’Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
     abstract public function executeRequest($url_path);
 }

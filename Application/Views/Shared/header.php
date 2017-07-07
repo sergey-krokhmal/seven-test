@@ -18,10 +18,10 @@
                 <div class="container">
                     <nav class="header-menu">
                         <ul class="nav nav-tabs">
-                            <li class="col-md-2">
+                            <li class="col-sm-3">
                                 <a href="/">Главная</a>
                             </li>
-                            <li class="col-md-2">
+                            <li class="col-sm-3">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Выполненные задания</a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/tasks/solved/1">Задание №1</a></li>
@@ -33,7 +33,7 @@
                                     <li><a href="/tasks/solved/7">Задание №7</a></li>
                                 </ul>
                             </li>
-							<li class="col-md-2">
+							<li class="col-sm-3">
                                 <a href="/tasks/text">Текст задания</a>
                             </li>
                         </ul>
