@@ -35,7 +35,7 @@ class Task3
 					$top_level_count++;
 				}
 				$i++;
-				$name = $this->randStr(5);
+				$name = $this->randStr(7);
 				$this->insertNode($tree, $i, $level, $name, $parent);
 			}
 			foreach($tree as $id => $node) {
